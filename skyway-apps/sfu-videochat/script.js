@@ -278,6 +278,9 @@ $(function() {
         return false;
       }
     } );
+    $('#chattext').on('show', function() {
+      room.send(linker(`user is at https://www.google.co.jp/maps/@${lat},${lng},18z`))
+  });
     room.on('data', message => {
       $("#chatarea").append('<div><span class="peer">' + message.src + '</span>: ' + linker(message.data) + '</div>');
       
