@@ -258,17 +258,27 @@ $(function() {
       el.srcObject = stream;
       el.play();
     });
+    const linker = function(str){
+      const r = /(https?|ftp)(:¥/¥/[-_.!~*¥'()a-zA-Z0-9;¥/?:¥@&=+¥$,%#]+)/g
+      const arr = str.match(r)
+      const replace_arr = arr.map(v=>`<a href="${v}">${v}</a>`)
+      let res = str
+      replace_arr.forEach((v,i)=>{
+        res = res.replace(arr[i],v)
+      })
+      return res
+    }
     $( '#chattext' ).keypress( function ( e ) {
       if ( e.which == 13 ) {
         const text = $("#chattext").val()
-        $("#chatarea").append('<div><span class="peer">You</span>: ' + text + '</div>');
+        $("#chatarea").append('<div><span class="peer">You</span>: ' + linker(text) + '</div>');
         
         room.send(text)
         return false;
       }
     } );
     room.on('data', message => {
-      $("#chatarea").append('<div><span class="peer">' + message.src + '</span>: ' + message.data + '</div>');
+      $("#chatarea").append('<div><span class="peer">' + message.src + '</span>: ' + linker(message.data) + '</div>');
       
     });
     room.on("removeStream", stream => {
