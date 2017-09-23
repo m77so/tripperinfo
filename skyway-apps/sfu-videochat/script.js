@@ -77,7 +77,7 @@ $(function() {
         let dists = stations.map(s=>getDistance(lat,lng,s[1],s[2]))
         let dist = dists.reduce((a,b)=>a>b?b:a,999999989999)
         moyori_i = dists.indexOf(dist)
-        $("#text-location").text(stations[moyori_i][0])
+        $(".text-location").text(stations[moyori_i][0])
       },
       // 取得失敗した場合
       function(error) {

@@ -35,6 +35,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
   border-width: 1px 0;
   border-color: #ccc;
   border-style: solid;
+  min-height: 200px;
 }
 
 
