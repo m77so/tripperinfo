@@ -75,7 +75,7 @@ $(function() {
         lat = position.coords.latitude;
         lng = position.coords.longitude;
         let dists = stations.map(s=>getDistance(lat,lng,s[1],s[2]))
-        let dist = stations.reduce((a,b)=>a>b?b:a,999999989999)
+        let dist = dists.reduce((a,b)=>a>b?b:a,999999989999)
         moyori_i = dists.indexOf(dist)
         console.log(dists)
         console.log(dist)
