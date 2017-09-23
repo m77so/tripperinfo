@@ -55,6 +55,7 @@ $(function() {
            function radians(deg){
               return deg * Math.PI / 180;
            }
+           console.log([lat1, lng1, lat2, lng2])
     
            return 6378.14 * Math.acos(Math.cos(radians(lat1))* 
             Math.cos(radians(lat2))*
@@ -76,6 +77,8 @@ $(function() {
         let dists = stations.map(s=>getDistance(lat,lng,s[1],s[2]))
         let dist = stations.reduce((a,b)=>a>b?b:a,999999989999)
         moyori_i = dists.indexOf(dist)
+        console.log(dists)
+        console.log(dist)
        console.log(moyori_i)
        console.log(stations[moyori_i])
         $("#text-location").val(stations[moyori_i][0])
