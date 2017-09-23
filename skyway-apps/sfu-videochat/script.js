@@ -258,7 +258,19 @@ $(function() {
       el.srcObject = stream;
       el.play();
     });
-
+    $( '#chattext' ).keypress( function ( e ) {
+      if ( e.which == 13 ) {
+        const text = $("#chattext").val()
+        $("#chatarea").append('<div><span class="peer">You</span>: ' + text + '</div>');
+        
+        room.send(text)
+        return false;
+      }
+    } );
+    room.on('data', message => {
+      $("#chatarea").append('<div><span class="peer">' + message.src + '</span>: ' + message.data + '</div>');
+      
+    });
     room.on("removeStream", stream => {
       const peerId = stream.peerId;
       $(

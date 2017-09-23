@@ -30,7 +30,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
   background: rgb(66, 184, 221); /* this is a light blue */
 }
 
-
+#chatarea {
+  background-color: #ddd;
+  border-width: 1px 0;
+  border-color: #ccc;
+  border-style: solid;
+}
 
 
 
