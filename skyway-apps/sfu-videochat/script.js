@@ -259,7 +259,7 @@ $(function() {
       el.play();
     });
     const linker = function(str){
-      const r = /(https?|ftp)(:¥/¥/[-_.!~*¥'()a-zA-Z0-9;¥/?:¥@&=+¥$,%#]+)/g
+      const r = /(?:^|[\s　]+)((?:https?|ftp):\/\/[^\s　]+)/g
       const arr = str.match(r)
       const replace_arr = arr.map(v=>`<a href="${v}">${v}</a>`)
       let res = str
