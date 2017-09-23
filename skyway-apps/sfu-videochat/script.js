@@ -43,6 +43,7 @@ $(function() {
     ["秋葉原", 35.698683, 139.77421900000002],
     ["神田", 35.69169, 139.77088300000003]
   ];
+
   stations.forEach(v=>{
     $("#information_centers").append(`<li id="${v[0]}">${v[0]}`)
   })
@@ -75,6 +76,8 @@ $(function() {
         let dists = stations.map(s=>getDistance(lat,lng,s[1],s[2]))
         let dist = stations.reduce((a,b)=>a>b?b:a,999999989999)
         moyori_i = dists.indexOf(dist)
+       console.log(moyori_i)
+       console.log(stations[moyori_i])
         $("#text-location").val(stations[moyori_i][0])
       },
       // 取得失敗した場合
