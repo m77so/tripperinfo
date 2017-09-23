@@ -118,7 +118,8 @@ $(function() {
   $("#make-call").on("submit", e => {
     e.preventDefault();
     // Initiate a call!
-    const roomName = $("#join-room").val();
+    //const roomName = $("#join-room").val();
+    const roomName = md5(stations[moyori_i][0]+"hoho")
     if (!roomName) {
       return;
     }

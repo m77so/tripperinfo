@@ -1,10 +1,11 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>SkyWay - Video chat example</title>
+  <title>Tripperinfo (client)</title>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.js"></script>
   <script type="text/javascript" src="//cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+  <script src="md5.js"></script>
   <script type="text/javascript" src="key.js"></script>
   <script type="text/javascript" src="script.js"></script>
 </head>
@@ -46,7 +47,7 @@
     <!-- Make calls to others -->
     <div id="step2">
       <h3>Make a call</h3>
-      <span id="text-location"></span>
+      接続先:<span id="text-location"></span>
       <form id="make-call" class="pure-form">
         
         <button class="pure-button pure-button-success" type="submit">Join</button>
