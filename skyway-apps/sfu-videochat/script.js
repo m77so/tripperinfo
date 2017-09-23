@@ -8,7 +8,6 @@ $(function() {
   } else {
     alert("この端末では位置情報が取得できません");
   }
-  const md5 = CybozuLabs.MD5.calc
   let lat = 0;
   let lng = 0;
   let moyori_i = -1
@@ -125,7 +124,7 @@ $(function() {
     e.preventDefault();
     // Initiate a call!
     //const roomName = $("#join-room").val();
-    const roomName = md5(stations[moyori_i][0]+"hoho")
+    const roomName = CybozuLabs.MD5.calc(stations[moyori_i][0]+"hoho")
     if (!roomName) {
       return;
     }
