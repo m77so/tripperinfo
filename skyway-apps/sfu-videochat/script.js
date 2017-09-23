@@ -44,9 +44,10 @@ $(function() {
   ];
 
   stations.forEach((v,i)=>{
-    $("#information_centers").append(`<option id="${i}">${v[0]}</option>`)
+    $("#information_centers").append(`<option id="${i}" value="${i}">${v[0]}</option>`)
   })
   $("#information_centers").change(function(){
+    console.log($(this).val())
     moyori_i = ~~($(this).val())
   })
   const  getDistance=function(lat1, lng1, lat2, lng2) {
