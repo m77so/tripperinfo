@@ -124,7 +124,7 @@ $(function() {
     e.preventDefault();
     // Initiate a call!
     //const roomName = $("#join-room").val();
-    const roomName = CybozuLabs.MD5.calc(stations[moyori_i][0]+"hoho")
+    const roomName = moyori_i
     if (!roomName) {
       return;
     }
