@@ -270,18 +270,20 @@ $(function() {
     }
     $( '#chattext' ).keypress( function ( e ) {
       if ( e.which == 13 ) {
+        
         const text = $("#chattext").val()
         $("#chatarea").append('<div><span class="peer">You</span>: ' + linker(text) + '</div>');
         $("#chattext").val("")
-        room.send(text)
+        const sendObj = JSON.stringify({text:text,place:`https://www.google.co.jp/maps/@${lat},${lng},18z`})
+        room.send(sendObj)
+        
         return false;
       }
     } );
-    setInterval( function() {
-      room.send(linker(`user is at https://www.google.co.jp/maps/@${lat},${lng},18z`))
-  },30);
+    
     room.on('data', message => {
-      $("#chatarea").append('<div><span class="peer">' + message.src + '</span>: ' + linker(message.data) + '</div>');
+      const res = JSON.parse(message.data)
+      $("#chatarea").append(`<div><span class="peer"><a href=${res.place} target="_blank">` + message.src + '</a></span>: ' + linker(res.text) + '</div>');
       
     });
     room.on("removeStream", stream => {
