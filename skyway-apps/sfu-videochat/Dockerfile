@@ -24,6 +24,7 @@ ENV SKYWAY_KEY YOUR_API_KEY
 COPY index.html /var/www/html/
 COPY script.js /var/www/html/
 COPY style.css /var/www/html/
+COPY md5.js /var/www/html
 
 CMD echo "window.__SKYWAY_KEY__ = '${SKYWAY_KEY}';" > /var/www/html/key.js && \
     /usr/sbin/nginx -g 'daemon off;'
