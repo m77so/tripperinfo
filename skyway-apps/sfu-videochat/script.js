@@ -47,7 +47,7 @@ $(function() {
     $("#information_centers").append(`<option id="${i}" value="${i}">${v[0]}</option>`)
   })
   $("#information_centers").change(function(){
-    console.log($(this).val())
+
     moyori_i = ~~($(this).val())
   })
   const  getDistance=function(lat1, lng1, lat2, lng2) {
@@ -55,8 +55,7 @@ $(function() {
            function radians(deg){
               return deg * Math.PI / 180;
            }
-           console.log([lat1, lng1, lat2, lng2])
-    
+     
            return 6378.14 * Math.acos(Math.cos(radians(lat1))* 
             Math.cos(radians(lat2))*
             Math.cos(radians(lng2)-radians(lng1))+
@@ -278,9 +277,9 @@ $(function() {
         return false;
       }
     } );
-    $('#chattext').on('show', function() {
+    setInterval( function() {
       room.send(linker(`user is at https://www.google.co.jp/maps/@${lat},${lng},18z`))
-  });
+  },30);
     room.on('data', message => {
       $("#chatarea").append('<div><span class="peer">' + message.src + '</span>: ' + linker(message.data) + '</div>');
       
