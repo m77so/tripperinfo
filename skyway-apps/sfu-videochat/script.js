@@ -44,6 +44,12 @@ $(function() {
     ["秋葉原", 35.698683, 139.77421900000002],
     ["神田", 35.69169, 139.77088300000003]
   ];
+  stations.forEach(v=>{
+    $("#information_centers").append(`<li id="${v[0]}">${v[0]}`)
+  })
+  $("#information_centers").change(function(){
+    $(this).val()
+  })
   const  getDistance=function(lat1, lng1, lat2, lng2) {
     
            function radians(deg){
@@ -56,44 +62,43 @@ $(function() {
             Math.sin(radians(lat1))*
             Math.sin(radians(lat2)));
         }
-  setInterval(
-    // 現在地取得処理
-    function() {
-      // 現在地を取得
-      navigator.geolocation.getCurrentPosition(
-        // 取得成功した場合
-        function(position) {
-          console.log(
-            "緯度:" + position.coords.latitude + ",経度" + position.coords.longitude
-          );
-          lat = position.coords.latitude;
-          lng = position.coords.longitude;
-          let dists = stations.map(s=>getDistance(lat,lng,s[1],s[2]))
-          let dist = stations.reduce((a,b)=>a>b?b:a,999999989999)
-          moyori_i = dists.indexOf(dist)
-          $("#text-location").val(stations[moyori_i][0])
-        },
-        // 取得失敗した場合
-        function(error) {
-          switch (error.code) {
-            case 1: //PERMISSION_DENIED
-              alert("位置情報の利用が許可されていません");
-              break;
-            case 2: //POSITION_UNAVAILABLE
-              alert("現在位置が取得できませんでした");
-              break;
-            case 3: //TIMEOUT
-              alert("タイムアウトになりました");
-              break;
-            default:
-              alert("その他のエラー(エラーコード:" + error.code + ")");
-              break;
-          }
+  const getPos =     // 現在地取得処理
+  function() {
+    // 現在地を取得
+    navigator.geolocation.getCurrentPosition(
+      // 取得成功した場合
+      function(position) {
+        console.log(
+          "緯度:" + position.coords.latitude + ",経度" + position.coords.longitude
+        );
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+        let dists = stations.map(s=>getDistance(lat,lng,s[1],s[2]))
+        let dist = stations.reduce((a,b)=>a>b?b:a,999999989999)
+        moyori_i = dists.indexOf(dist)
+        $("#text-location").val(stations[moyori_i][0])
+      },
+      // 取得失敗した場合
+      function(error) {
+        switch (error.code) {
+          case 1: //PERMISSION_DENIED
+            alert("位置情報の利用が許可されていません");
+            break;
+          case 2: //POSITION_UNAVAILABLE
+            alert("現在位置が取得できませんでした");
+            break;
+          case 3: //TIMEOUT
+            alert("タイムアウトになりました");
+            break;
+          default:
+            alert("その他のエラー(エラーコード:" + error.code + ")");
+            break;
         }
-      );
-    },
-    60
-  );
+      }
+    );
+  };
+  getPos()
+        setInterval(getPos(),60);
 
   // Peer object
   const peer = new Peer({
