@@ -274,7 +274,7 @@ $(function() {
         const text = $("#chattext").val()
         $("#chatarea").append('<div><span class="peer">You</span>: ' + linker(text) + '</div>');
         $("#chattext").val("")
-        const sendObj = JSON.stringify({text:text,place:`https://www.google.co.jp/maps/@${lat},${lng},18z`})
+        const sendObj = JSON.stringify({text:text,place:`https://www.google.co.jp/maps?q=${lat},${lng}`})
         room.send(sendObj)
         
         return false;
