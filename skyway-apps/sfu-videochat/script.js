@@ -3,7 +3,7 @@ $(function() {
   // GPS
   // Geolocation APIに対応している
   if (navigator.geolocation) {
-    alert("この端末では位置情報が取得できます");
+    //alert("この端末では位置情報が取得できます");
     // Geolocation APIに対応していない
   } else {
     alert("この端末では位置情報が取得できません");
