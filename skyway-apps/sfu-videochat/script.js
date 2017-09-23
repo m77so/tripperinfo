@@ -81,7 +81,7 @@ $(function() {
         console.log(dist)
        console.log(moyori_i)
        console.log(stations[moyori_i])
-        $("#text-location").val(stations[moyori_i][0])
+        $("#text-location").text(stations[moyori_i][0])
       },
       // 取得失敗した場合
       function(error) {
