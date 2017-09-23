@@ -262,7 +262,7 @@ $(function() {
       const r = /(?:^|[\s　]+)((?:https?|ftp):\/\/[^\s　]+)/g
       const arr = str.match(r) || []
 
-      const replace_arr = arr.map(v=>`<a href="${v}">${v}</a>`)
+      const replace_arr = arr.map(v=>`<a target="_blank"  href="${v}">${v}</a>`)
       let res = str
       replace_arr.forEach((v,i)=>{
         res = res.replace(arr[i],v)
