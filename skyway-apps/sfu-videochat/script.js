@@ -1,5 +1,4 @@
 /* eslint-disable require-jsdoc */
-"use strict"
 $(function() {
   // GPS
   // Geolocation APIに対応している
