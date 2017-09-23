@@ -283,7 +283,7 @@ $(function() {
     
     room.on('data', message => {
       const res = JSON.parse(message.data)
-      $("#chatarea").append(`<div><span class="peer"><a href=${res.place} target="_blank">` + message.src + '</a></span>: ' + linker(res.text) + '</div>');
+      $("#chatarea").append(`<div><span class="peer"><a href="${res.place}" target="_blank">` + message.src + '</a></span>: ' + linker(res.text) + '</div>');
       
     });
     room.on("removeStream", stream => {
