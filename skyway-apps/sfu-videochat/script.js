@@ -273,7 +273,7 @@ $(function() {
       if ( e.which == 13 ) {
         const text = $("#chattext").val()
         $("#chatarea").append('<div><span class="peer">You</span>: ' + linker(text) + '</div>');
-        
+        $("#chattext").val("")
         room.send(text)
         return false;
       }
