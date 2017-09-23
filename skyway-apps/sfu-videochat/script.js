@@ -45,7 +45,7 @@ $(function() {
   ];
 
   stations.forEach((v,i)=>{
-    $("#information_centers").append(`<li id="${i}">${v[0]}</li>`)
+    $("#information_centers").append(`<option id="${i}">${v[0]}</option>`)
   })
   $("#information_centers").change(function(){
     moyori_i = ~~($(this).val())
