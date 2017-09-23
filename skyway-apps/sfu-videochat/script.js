@@ -260,7 +260,8 @@ $(function() {
     });
     const linker = function(str){
       const r = /(?:^|[\s　]+)((?:https?|ftp):\/\/[^\s　]+)/g
-      const arr = str.match(r)
+      const arr = str.match(r) || []
+
       const replace_arr = arr.map(v=>`<a href="${v}">${v}</a>`)
       let res = str
       replace_arr.forEach((v,i)=>{
